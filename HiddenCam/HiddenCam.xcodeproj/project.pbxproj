@@ -13,6 +13,7 @@
 		6522598E238CDCCD00CC3EBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6522598D238CDCCD00CC3EBC /* Assets.xcassets */; };
 		65225991238CDCCD00CC3EBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6522598F238CDCCD00CC3EBC /* LaunchScreen.storyboard */; };
 		65225999238CE1E300CC3EBC /* CamerVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65225998238CE1E300CC3EBC /* CamerVIewController.swift */; };
+		6522599B238CECA200CC3EBC /* CamerVIewControllerHidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6522599A238CECA200CC3EBC /* CamerVIewControllerHidden.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		65225990238CDCCD00CC3EBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65225992238CDCCD00CC3EBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65225998238CE1E300CC3EBC /* CamerVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamerVIewController.swift; sourceTree = "<group>"; };
+		6522599A238CECA200CC3EBC /* CamerVIewControllerHidden.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamerVIewControllerHidden.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				6522598F238CDCCD00CC3EBC /* LaunchScreen.storyboard */,
 				65225992238CDCCD00CC3EBC /* Info.plist */,
 				65225998238CE1E300CC3EBC /* CamerVIewController.swift */,
+				6522599A238CECA200CC3EBC /* CamerVIewControllerHidden.swift */,
 			);
 			path = HiddenCam;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65225999238CE1E300CC3EBC /* CamerVIewController.swift in Sources */,
+				6522599B238CECA200CC3EBC /* CamerVIewControllerHidden.swift in Sources */,
 				65225989238CDCCB00CC3EBC /* ViewController.swift in Sources */,
 				65225987238CDCCB00CC3EBC /* AppDelegate.swift in Sources */,
 			);
@@ -289,6 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W8HA3A9699;
 				INFOPLIST_FILE = HiddenCam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +312,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W8HA3A9699;
 				INFOPLIST_FILE = HiddenCam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

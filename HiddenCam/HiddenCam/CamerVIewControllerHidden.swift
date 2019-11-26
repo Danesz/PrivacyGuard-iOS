@@ -9,14 +9,10 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController {
-    var previewView : UIView!
+class CameraViewControllerHidden: UIViewController {
     let photoButton: UIButton = UIButton()
     
     //Camera Capture requiered properties
-    var videoDataOutput: AVCaptureVideoDataOutput!
-    var videoDataOutputQueue: DispatchQueue!
-    var previewLayer:AVCaptureVideoPreviewLayer!
     var captureDevice : AVCaptureDevice!
     let session = AVCaptureSession()
     var stillImageOutput: AVCapturePhotoOutput!
@@ -24,17 +20,13 @@ class CameraViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        previewView = UIView(frame: CGRect(x: 0,
-                                           y: 0,
-                                           width: UIScreen.main.bounds.size.width,
-                                           height: UIScreen.main.bounds.size.height))
-        previewView.contentMode = UIView.ContentMode.scaleAspectFit
-        view.addSubview(previewView)
+        
+        self.view.backgroundColor = UIColor.white
         
         photoButton.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
         photoButton.backgroundColor = UIColor.red
         photoButton.layer.masksToBounds = true
-        photoButton.setTitle("take a photo", for: .normal)
+        photoButton.setTitle("or?", for: .normal)
         photoButton.setTitleColor(UIColor.white, for: .normal)
         photoButton.layer.cornerRadius = 20.0
         photoButton.layer.position = CGPoint(x: self.view.frame.width/2, y:200)
@@ -42,6 +34,11 @@ class CameraViewController: UIViewController {
         
         view.addSubview(photoButton)
         
+        let text: UITextView = UITextView(frame: CGRect(x: self.view.frame.width/2 - 150, y: 100, width: 300, height: 40))
+        text.text = "This is just a regular ViewController. There is nothing to see here."
+        text.textColor = UIColor.black
+        view.addSubview(text)
+
         self.setupAVCapture()
     }
     
@@ -52,7 +49,7 @@ class CameraViewController: UIViewController {
 
 
 // MARK: - AVCaptureSession related methods
-extension CameraViewController {
+extension CameraViewControllerHidden {
     func setupAVCapture(){
         session.sessionPreset = AVCaptureSession.Preset.vga640x480
         guard let device = AVCaptureDevice
@@ -79,30 +76,14 @@ extension CameraViewController {
                 self.session.addInput(deviceInput)
             }
             
-            videoDataOutput = AVCaptureVideoDataOutput()
-            videoDataOutput.alwaysDiscardsLateVideoFrames = true
-            videoDataOutputQueue = DispatchQueue(label: "VideoDataOutputQueue")
-            videoDataOutput.setSampleBufferDelegate(self, queue:self.videoDataOutputQueue)
-            
-            if session.canAddOutput(self.videoDataOutput){
-                session.addOutput(self.videoDataOutput)
-            }
-            
             stillImageOutput = AVCapturePhotoOutput()
             
             if session.canAddOutput(stillImageOutput) {
                 session.addOutput(self.stillImageOutput)
             }
             
-            videoDataOutput.connection(with: .video)?.isEnabled = true
-            
-            previewLayer = AVCaptureVideoPreviewLayer(session: self.session)
-            previewLayer.videoGravity = AVLayerVideoGravity.resizeAspect
-            
-            let rootLayer: CALayer = self.previewView.layer
-            rootLayer.masksToBounds = true
-            previewLayer.frame = rootLayer.bounds
-            rootLayer.addSublayer(self.previewLayer)
+            // we can also attach videoDataOutput from the previous example to get all the video frames
+            // but now for the example image capturing is enough
             
             session.startRunning()
         } catch let error as NSError {
@@ -117,15 +98,8 @@ extension CameraViewController {
     }
 }
 
-// MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
-extension CameraViewController:  AVCaptureVideoDataOutputSampleBufferDelegate{
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        // do stuff here with the video
-    }
-}
-
 // MARK: - AVCapturePhotoCaptureDelegate
-extension CameraViewController: AVCapturePhotoCaptureDelegate {
+extension CameraViewControllerHidden: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         //process single image
         guard let imageData = photo.fileDataRepresentation()

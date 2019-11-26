@@ -29,12 +29,12 @@ class ViewController: UIViewController {
         self.view.addSubview(buttonGood)
         
         buttonEvil.frame = CGRect(x: 0, y: 0, width: 250, height: 40)
-        buttonEvil.backgroundColor = UIColor.blue
+        buttonEvil.backgroundColor = UIColor.red
         buttonEvil.layer.masksToBounds = true
-        buttonEvil.setTitle("capture with viewfinder", for: .normal)
+        buttonEvil.setTitle("capture without viewfinder", for: .normal)
         buttonEvil.setTitleColor(UIColor.white, for: .normal)
         buttonEvil.layer.cornerRadius = 20.0
-        buttonEvil.layer.position = CGPoint(x: self.view.frame.width/2, y:200)
+        buttonEvil.layer.position = CGPoint(x: self.view.frame.width/2, y:300)
         buttonEvil.addTarget(self, action: #selector(self.buttonEvilClick(sender:)), for: .touchUpInside)
         
         self.view.addSubview(buttonEvil)
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     }
 
     @objc func buttonEvilClick(sender: UIButton) {
-
+        self.show(CameraViewControllerHidden(), sender: self)
     }
 
 }
