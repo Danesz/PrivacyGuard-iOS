@@ -3,7 +3,7 @@ Name: PrivacyGuard
 Depends: mobilesubstrate
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
+Description: A tweak to detect privacy related API usage (camera, microphone, etc...)!
 Maintainer: Daniel Dallos
 Author: Daniel Dallos
 Section: Tweaks
